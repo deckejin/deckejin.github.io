@@ -1,4 +1,23 @@
 ---
 ---
-
-@import "{{ site.theme }}";
+html,body{
+    font-family:"Raleway",sans-serif;
+    font-size:12px;
+    line-height:1.5
+}
+h2 {
+    font-size: 1rem;
+    overflow: hidden;
+    color: teal;
+  }
+  
+  h2:after {
+    content: "";
+    display: inline-block;
+    height: 0.5em;
+    vertical-align: bottom;
+    width: 100%;
+    margin-right: -100%;
+    margin-left: 10px;
+    border-top: 1px solid black;
+  }

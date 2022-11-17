@@ -1,18 +1,26 @@
 
-<!-- Links (sit on top) -->
-<div class="w3-top">
-  <div class="w3-row w3-padding w3-black">
-    <div class="w3-col s3">
-      <a href="#" class="w3-button w3-block w3-black">HOME</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="#about" class="w3-button w3-block w3-black">ABOUT</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="#menu" class="w3-button w3-block w3-black">MENU</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="#where" class="w3-button w3-block w3-black">WHERE</a>
-    </div>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-white" style="z-index:3;width:300px;"><br>
+  <div class="w3-container">
+    <!-- <a href="#" onclick="w3_close()" class="hide-large right jumbo padding hover-grey" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a> -->
+    <img src="{{ site.author.avatar | relative_url }}" style="width:50%;" class="w3-round"><br><br>
+    <h4><b>{{ site.author.name }}</b></h4>
+    <p class="w3-text-grey">PhD student at the CTU in Prague.<br>Focus on routing and mutli-goal path planning.</p>
   </div>
-</div>
+  <div class="w3-bar-block">
+    <a href="/" id="home" onclick="w3_close(this.id)" class="w3-bar-item w3-button w3-padding "><i class="fa fa-home fa-fw margin-right"></i>HOME</a> 
+    <a href="/about" id="about" onclick="w3_close(this.id)" class="w3-bar-item w3-button w3-padding "><i class="fa fa-user fa-fw margin-right"></i>ABOUT</a> 
+    <a href="/about#publications" id="publications" onclick="w3_close(this.id)" class="w3-bar-item w3-button w3-padding "><i class="fa fa-book fa-fw margin-right"></i>PUBLICATIONS</a> 
+    <a href="/about#projects" id="projects" onclick="w3_close(this.id)" class="w3-bar-item w3-button w3-padding  "><i class="fa fa-folder fa-fw margin-right"></i>PROJECTS</a>
+  </div>
+  <div class="w3-panel " style="display: inline-block; text-align: justify;">
+    <a href="mailto:{{ site.author.email }}"><i class="fa fa-envelope hover-opacity"></i></a>
+    <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank"><i class="fa fa-linkedin hover-opacity"></i></a>
+    <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank"><i class="fa fa-twitter hover-opacity"></i></a>
+    <a href="https://github.com/{{ site.author.github }}" target="_blank"><i class="fa fa-github hover-opacity"></i></a>
+    <a href="https://orcid.org/{{ site.author.orcid }}" target="_blank"><i class="ai ai-orcid ai-fw hover-opacity"></i></a>
+    <a href="{{ site.author.googlescholar }}" target="_blank"><i class="ai ai-google-scholar ai-fw hover-opacity"></i></a>
+  </div>
+</nav>

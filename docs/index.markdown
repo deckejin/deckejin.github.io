@@ -7,4 +7,6 @@ title: Home
 permalink: /
 ---
 
-Hello
+# 🔥 News
+- *2022.06*: &nbsp;🎉🎉 
+

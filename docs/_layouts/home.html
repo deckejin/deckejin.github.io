@@ -2,60 +2,51 @@
 layout: default
 ---
 
-<div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
+<div class="w3-home">
+  <header>
+    <div class="w3-container w3-bottombar">
+      {%- if page.title -%}
+    <h1 class="w3-page-heading">{{ page.title }}</h1>
+     {%- endif -%}
+   
+    </div>
+  </header>
 
-  {{ content }}
+  <div class="w3-container">  {{ content }} </div>
+  <div class="w3-container">
+    <h1>Blog posts</h1>
+    <div class="w3-section w3-padding-16">
+      <span class="w3-margin-right">Categories:</span> 
+      <button class="w3-button w3-black" onclick="filterUsingCategory('All')" id="All"> ALL</button>
+      {% assign categories = site.categories | sort %}
+      {% for category in categories %}
+        {% assign cat = category | first %}
+        <button id="{{ cat }}" class="w3-button w3-white" onclick="filterUsingCategory(this.id)">
+          {{ cat }}
+        </button>
+      {% endfor %}
+    </div>
 
-
-  {% if site.paginate %}
-    {% assign posts = paginator.posts %}
-  {% else %}
-    {% assign posts = site.posts %}
-  {% endif %}
-
-
-  {%- if posts.size > 0 -%}
-    {%- if page.list_title -%}
-      <h2 class="post-list-heading">{{ page.list_title }}</h2>
-    {%- endif -%}
-    <ul class="post-list">
+    {% assign id = 0 %}
+    <div class="w3-row-padding">
       {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      {%- for post in posts -%}
-      <li>
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
+      {% for post in site.posts %}
+        {% assign id = id | plus:1 %}
+        <div class="w3-third w3-container w3-margin-bottom" id="{{id}}">
+          <img src="{{ post.image  | relative_url }}" style="height:100px" class="hover-opacity">
+          <div class="w3-container w3-white">
+            <p> 
+              <a class="post-link" href="{{ post.url | relative_url }}">
+                <b>{{ post.title | escape }}</b> | {{ post.date | date: date_format }} | {{ post.categories }}
+              </a>
+            </p>
+            <p>{{ post.excerpt }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
 
-    {% if site.paginate %}
-      <div class="pager">
-        <ul class="pagination">
-        {%- if paginator.previous_page %}
-          <li><a href="{{ paginator.previous_page_path | relative_url }}" class="previous-page">{{ paginator.previous_page }}</a></li>
-        {%- else %}
-          <li><div class="pager-edge">•</div></li>
-        {%- endif %}
-          <li><div class="current-page">{{ paginator.page }}</div></li>
-        {%- if paginator.next_page %}
-          <li><a href="{{ paginator.next_page_path | relative_url }}" class="next-page">{{ paginator.next_page }}</a></li>
-        {%- else %}
-          <li><div class="pager-edge">•</div></li>
-        {%- endif %}
-        </ul>
-      </div>
-    {%- endif %}
+</div>
 
-  {%- endif -%}
 
 </div>

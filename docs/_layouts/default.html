@@ -3,17 +3,63 @@
 
   {%- include head.html -%}
 
-  <body>
+  <body class="w3-light-grey w3-content" style="max-width:1600px">
 
     {%- include header.html -%}
+    <div class="w3-main" style="margin-left:300px">
 
-    <main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
+
+  <!-- Header -->
+  <header id="portfolio">
+   
+  </header>
+
+    <main class="w3-page-content" aria-label="Content">
+      <div class="w3-row-padding">{{ content }}</div>
     </main>
 
     {%- include footer.html -%}
+
+  </div>
+
+
+<script type="text/javascript">
+  // Script to open and close sidebar
+  function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+  }
+   
+  function w3_close(id) {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+  }
+
+  function filterUsingCategory(selectedCategory) {
+    var id = 0;
+    {% for post in site.posts %}
+      var cats = {{ post.categories | jsonify }}
+
+      var postDiv = document.getElementById(++id);
+      postDiv.style.display =
+        (selectedCategory == 'All' || cats.includes(selectedCategory)) 
+          ? 'unset' 
+          : 'none';
+    {% endfor %}
+
+    const buttons = document.querySelectorAll('.w3-button');
+
+    buttons.forEach(button => {
+      button.classList.remove('w3-black');
+      button.classList.add('w3-white');
+    });
+
+    document.getElementById(selectedCategory).classList.add('w3-black');
+    document.getElementById(selectedCategory).classList.remove('w3-white');
+  }
+
+  </script>
+
 
   </body>
 
