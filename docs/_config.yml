@@ -40,7 +40,7 @@ plugins:
 # Site Author
 author:
   name             : "Jindřiška Deckerová"
-  avatar           : "/images/photo.jpg"
+  avatar           : "/images/photo.jpeg"
   bio              : "Czech Technical University in Prague"
   location         : "Prague"
   employer         :
