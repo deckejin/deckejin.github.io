@@ -1,72 +1,43 @@
 ---
 layout: default
 ---
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
-    <div class="w3-container w3-bottombar">
-      {%- if page.title -%}
-        <h1 class="page-heading">{{ page.title }}</h1>
-     {%- endif -%}
-    <div class="w3-col m6">
-      {%- if page.author -%} by 
-        {% for author in page.author %}
-            <span><b>{{ author }}</b></span>
-            {%- if forloop.last == false %}, {% endif -%}
-        {% endfor %}
-      {%- endif -%}
-    </div>
-     
-    <div class="w3-col m6" style="text-align: right;">
-     {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      <time>
-        {{ page.date | date: date_format }}
-      </time>
-    </div>
+<article>
+  <div class="container">
 
-
-      {%- if page.image -%}
-          ![My helpful screenshot]({{ page.image | relative_url }})
-
-      {%- endif -%}
-   
-    </div>
-  </header>
-
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {{ page.date | date: date_format }}
-      </time>
-      {%- if page.modified_date -%}
-        ~ 
-        {%- assign mdate = page.modified_date | date_to_xmlschema -%}
-        <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
-          {{ mdate | date: date_format }}
+    <header>
+      <a href="/blog" class="back">Back to blog</a>
+      <h1 class="" itemprop="name headline">{{ page.title | escape }}</h1>
+      <p class="post-name">
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        <time class="" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+          {{ page.date | date: date_format }}
         </time>
-      {%- endif -%}
-      {%- if page.author -%}
-        • {% for author in page.author %}
-          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="p-author h-card" itemprop="name">{{ author }}</span></span>
-            {%- if forloop.last == false %}, {% endif -%}
-        {% endfor %}
-      {%- endif -%}</p>
-      {%- if page.image -%}
-          ![My helpful screenshot]({{ page.image | relative_url }})
+        {%- if page.modified_date -%}
+          ~ 
+          {%- assign mdate = page.modified_date | date_to_xmlschema -%}
+          <time class="" datetime="{{ mdate }}" itemprop="dateModified">
+            {{ mdate | date: date_format }}
+          </time>
+        {%- endif -%}
+        {%- if page.author -%}
+          • {% for author in page.author %}
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <span class="" itemprop="name">{{ author }}</span></span>
+              {%- if forloop.last == false %}, {% endif -%}
+          {% endfor %}
+        {%- endif -%}</p>
+        {%- if page.image -%}
+              <img src="{{ page.image | relative_url }}" class="post-img"/>
+            <!-- ![My helpful screenshot]({{ page.image | relative_url }}) -->
+        {%- endif -%}
+    </header>
 
-      {%- endif -%}
-  </header>
-
-  <div class="w3-container" itemprop="articleBody">
-    {{ content }}
+  <div class="grid-cv">
+    <div class="post-p">
+      {{ content }}
+    </div>
   </div>
 
-  {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
-  {%- endif -%}
 
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</div>
 </article>

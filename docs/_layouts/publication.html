@@ -1,0 +1,42 @@
+---
+layout: default
+---
+<article>
+  <div class="container">
+
+    <header>
+      <a href="/publications" class="back">Back to all publications</a>
+      <h1 class="" itemprop="name headline">{{ page.title | escape }}</h1>
+      <p class="post-name">
+        <!-- {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        <time class="" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+          {{ page.date | date: date_format }}
+        </time>
+        {%- if page.modified_date -%}
+          ~ 
+          {%- assign mdate = page.modified_date | date_to_xmlschema -%}
+          <time class="" datetime="{{ mdate }}" itemprop="dateModified">
+            {{ mdate | date: date_format }}
+          </time>
+        {%- endif -%} -->
+        {%- if page.author -%}
+          Authors: {% for author in page.author %}
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <span class="" itemprop="name"><i>{{ author }}</i></span></span>
+              {%- if forloop.last == false %}, {% endif -%}
+          {% endfor %}
+        {%- endif -%}</p>
+        <!-- {%- if page.image -%}
+              <img src="{{ page.image | relative_url }}" class="post-img"/>
+        {%- endif -%} -->
+    </header>
+
+  <div class="grid-cv">
+    <div class="post-p">
+      {{ content }}
+    </div>
+  </div>
+
+
+</div>
+</article>

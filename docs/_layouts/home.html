@@ -2,51 +2,87 @@
 layout: default
 ---
 
-<div class="w3-home">
-  <header>
-    <div class="w3-container w3-bottombar">
-      {%- if page.title -%}
-    <h1 class="w3-page-heading">{{ page.title }}</h1>
-     {%- endif -%}
-   
-    </div>
-  </header>
+<div class="container" >
+  <div class="grid">
+    <div class="grid-about">
+      <h1><b>{{ site.author.name }}</b></h1>
+      {{ content }}
 
-  <div class="w3-container">  {{ content }} </div>
-  <div class="w3-container">
-    <h1>Blog posts</h1>
-    <div class="w3-section w3-padding-16">
-      <span class="w3-margin-right">Categories:</span> 
-      <button class="w3-button w3-black" onclick="filterUsingCategory('All')" id="All"> ALL</button>
-      {% assign categories = site.categories | sort %}
-      {% for category in categories %}
-        {% assign cat = category | first %}
-        <button id="{{ cat }}" class="w3-button w3-white" onclick="filterUsingCategory(this.id)">
-          {{ cat }}
-        </button>
-      {% endfor %}
+
+      <div class="icons">
+        <a href="mailto:{{ site.author.email }}"><i class="fa fa-envelope hover-opacity"></i></a>
+        <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank"><i class="fa fa-linkedin hover-opacity"></i></a>
+        <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank"><i class="fa fa-twitter hover-opacity"></i></a>
+        <a href="https://github.com/{{ site.author.github }}" target="_blank"><i class="fa fa-github hover-opacity"></i></a>
+        <a href="https://orcid.org/{{ site.author.orcid }}" target="_blank"><i class="ai ai-orcid ai-fw hover-opacity"></i></a>
+        <a href="{{ site.author.googlescholar }}" target="_blank"><i class="ai ai-google-scholar ai-fw hover-opacity"></i></a>
+      </div>
     </div>
 
-    {% assign id = 0 %}
-    <div class="w3-row-padding">
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      {% for post in site.posts %}
-        {% assign id = id | plus:1 %}
-        <div class="w3-third w3-container w3-margin-bottom" id="{{id}}">
-          <img src="{{ post.image  | relative_url }}" style="height:100px" class="hover-opacity">
-          <div class="w3-container w3-white">
-            <p> 
-              <a class="post-link" href="{{ post.url | relative_url }}">
-                <b>{{ post.title | escape }}</b> | {{ post.date | date: date_format }} | {{ post.categories }}
-              </a>
-            </p>
-            <p>{{ post.excerpt }}</p>
-          </div>
+    <div class="grid-photo">
+      <img src="{{ site.author.avatar | relative_url }}"><br><br>
+    </div>
+  </div>
+
+<!-- <hr class="line"> -->
+
+  <div class="grid-cv">
+    <!-- <h2>News:</h2>
+    {% capture news %}{% include_relative /News.md %}{% endcapture %}
+    {{ news | markdownify }} -->
+    <!-- {% assign posts = site.posts | where_exp: "item", "item.tags contains 'selected-publication'" %}
+    {% for post in posts %}
+      <div class="selected">
+        <img src="{{ post.image  | relative_url }}">
+        <div class="selected-info">
+          <a class="" href="{{ post.url | relative_url }}">
+            <b>{{ post.title | escape }}</b> 
+          </a>
+          <p>
+            {{ post.excerpt }}
+          </p>
         </div>
-      {% endfor %}
+      </div>
+    {% endfor %} -->
+  </div>
+
+  <hr class="line">
+
+  <div class="grid-cv">
+    <h2>Selected publications:</h2>
+    {% assign posts = site.posts | where_exp: "item", "item.tags contains 'selected-publication'" %}
+    {% for post in posts %}
+      <div class="selected">
+        <img src="{{ post.image  | relative_url }}">
+        <div class="selected-info">
+          <a class="" href="{{ post.url | relative_url }}">
+            <b>{{ post.title | escape }}</b> 
+          </a>
+          <p>
+            {{ post.excerpt }}
+          </p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- <div class="grid-cv">
+    <h2>Selected projects:</h2>
+    {% assign posts = site.posts | where_exp: "item", "item.tags contains 'selected-project'" %}
+    {% for post in posts %}
+    <div class="selected">
+      <img src="{{ post.image  | relative_url }}">
+      <div class="selected-info">
+        <a class="" href="{{ post.url | relative_url }}">
+          <b>{{ post.title | escape }}</b> 
+        </a>
+        <p>
+          {{ post.excerpt }}
+        </p>
+      </div>
     </div>
+    {% endfor %}
 
+  </div> -->
 </div>
 
-
-</div>

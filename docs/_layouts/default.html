@@ -1,65 +1,92 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {%- seo -%}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "academicons-1.9.2/css/academicons.css" | relative_url}}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {%- feed_meta -%}
+    {%- if jekyll.environment == 'production' and site.google_analytics -%}
+      {%- include google-analytics.html -%}
+    {%- endif -%}
+  </head>
 
-  {%- include head.html -%}
+  <body>
+    <header>
+      <nav class="nav-bar">
+        <a href="/" id="home" class="nav-button active" onclick="select_nav(this.id)">HOME</a> 
+        <a href="/cv" id="cv" class="nav-button " onclick="select_nav(this.id)" >CV</a> 
+        <!-- <a href="/projects" class="nav-button" id="projects" onclick="select_nav(this.id)">PROJECTS</a> -->
+        <a href="/publications" class="nav-button " id="publications" onclick="select_nav(this.id)" >PUBLICATIONS</a> 
+        <!-- <a href="/about" id="about" class="nav-button " onclick="select_nav(this.id)">ABOUT</a>  -->
+        <!-- <a href="/blog" id="blog" class="nav-button " onclick="select_nav(this.id)" >BLOG</a>  -->
+      </nav>
+      <div class="header"> 
+        
+      </div>
+    </header>
 
-  <body class="w3-light-grey w3-content" style="max-width:1600px">
 
-    {%- include header.html -%}
-    <div class="w3-main" style="margin-left:300px">
-
-
-  <!-- Header -->
-  <header id="portfolio">
-   
-  </header>
-
-    <main class="w3-page-content" aria-label="Content">
-      <div class="w3-row-padding">{{ content }}</div>
+    <main class="content">
+      <div>{{ content }}</div>
     </main>
 
-    {%- include footer.html -%}
+    
+    <!-- <footer class="footer">
+      <div class="desc">
+        <p>{{site.description | escape }}</p>
+      </div>
 
-  </div>
+      <div class="info">
+        {{ site.author.name | escape }}<br>
+        <i class="fa fa-home"></i> {{ site.author.bio }}<br>
+        <i class="fa fa-envelope"></i> <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+      </div>
+    </footer> -->
+    
+    <script type="text/javascript">
+      function filterSelected() {
+        var id = 0;
+        {% for pub in site.posts %}
+          var cats = {{ pub.categories | jsonify }}
+
+          var postDiv = document.getElementById(++id);
+          postDiv.style.display =
+            (cats.includes('Selected-Publications')) 
+              ? 'unset' 
+              : 'none';
+        {% endfor %}
+      }
+
+      function filterUsingCategory(selectedCategory) {
+        var id = 0;
+        {% for post in site.posts %}
+          var cats = {{ post.categories | jsonify }}
+
+          var postDiv = document.getElementById(++id);
+          postDiv.style.display =
+            (selectedCategory == 'All' || cats.includes(selectedCategory)) 
+              ? 'unset' 
+              : 'none';
+        {% endfor %}
+
+        const buttons = document.querySelectorAll('.category');
+
+        buttons.forEach(button => {
+          button.classList.remove('cactive');
+          button.classList.add('cinactive');
+        });
+
+        document.getElementById(selectedCategory).classList.add('cactive');
+        document.getElementById(selectedCategory).classList.remove('cinactive');
+      }
 
 
-<script type="text/javascript">
-  // Script to open and close sidebar
-  function w3_open() {
-      document.getElementById("mySidebar").style.display = "block";
-      document.getElementById("myOverlay").style.display = "block";
-  }
-   
-  function w3_close(id) {
-      document.getElementById("mySidebar").style.display = "none";
-      document.getElementById("myOverlay").style.display = "none";
-  }
-
-  function filterUsingCategory(selectedCategory) {
-    var id = 0;
-    {% for post in site.posts %}
-      var cats = {{ post.categories | jsonify }}
-
-      var postDiv = document.getElementById(++id);
-      postDiv.style.display =
-        (selectedCategory == 'All' || cats.includes(selectedCategory)) 
-          ? 'unset' 
-          : 'none';
-    {% endfor %}
-
-    const buttons = document.querySelectorAll('.w3-button');
-
-    buttons.forEach(button => {
-      button.classList.remove('w3-black');
-      button.classList.add('w3-white');
-    });
-
-    document.getElementById(selectedCategory).classList.add('w3-black');
-    document.getElementById(selectedCategory).classList.remove('w3-white');
-  }
-
-  </script>
-
+    </script>
 
   </body>
 
