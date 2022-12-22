@@ -189,6 +189,14 @@ html,body{
   /* margin: 1em; */
 }
 
+.publication {
+  padding-bottom: 50px;
+}
+
+.excerpt {
+  text-decoration: italic;
+}
+
 .post {
   /* width: 100px; */
   padding: 1em 0em 0em 0em;
