@@ -33,8 +33,7 @@ layout: default
     {% assign posts = site.posts | where_exp: "item", "item.tags contains 'news'" %}
     {% for post in posts %}
       <div class="news">
-            {{ post.date2 }} - <b>{{ post.qtitle | escape }}</b>
-            <a class="news" href="{{ post.url | relative_url }}">>> Read more...</a>
+            {{ post.date2 }} - <a class="news" href="{{ post.url | relative_url }}"><b>{{ post.qtitle | escape }}</b></a>
       </div>
     {% endfor %}
   </div>

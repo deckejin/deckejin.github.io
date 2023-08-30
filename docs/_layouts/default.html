@@ -70,8 +70,9 @@
           var postDiv = document.getElementById(++id);
           postDiv.style.display =
             (selectedCategory == 'All' || cats.includes(selectedCategory)) 
-              ? 'unset' 
+              ? 'block' 
               : 'none';
+          postDiv.classList.add('post')
         {% endfor %}
 
         const buttons = document.querySelectorAll('.category');

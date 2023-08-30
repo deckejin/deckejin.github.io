@@ -6,7 +6,7 @@ bibliography: references.bib
 ---
 
 ## Publications
-[1. Deckerová, J., Kučerová K., Faigl, J., On Improvement Heuristic to Solutions of the Close Enough Traveling Salesman Problem in Environments with Obstacles, European Conference on Mobile Robots (ECMR), 2023, *accepted*.](/_posts/2023-08-30-emcr23cetspo.md)
+1. [Deckerová, J., Kučerová K., Faigl, J., On Improvement Heuristic to Solutions of the Close Enough Traveling Salesman Problem in Environments with Obstacles, European Conference on Mobile Robots (ECMR), 2023, *accepted*.](/_posts/2023-08-16-ecmr23cetspo.md)
 2. Deckerová, J., Váňa P., & Faigl, J., Combinatorial Lower Bounds for the Generalized Traveling Salesman Problem with Neighborhoods. Expert Systems with Applications, *in review*.
 3. [Deckerová, J., Krátký, V. & Faigl, J., Traveling Salesman Problem with Neighborhoods on a Sphere in Reflectance Transformation Imaging Scenarios. Expert Systems with Applications, 198116814, 2022.](/_posts/2022-12-22-eswa22tspns.md)
 4. [Deckerová, J. & Faigl, J., Hopfield Neural Network in Solution of the Close Enough Orienteering Problem. In Proceedings of the 20th Conference Information Technologies - Applications and Theory (pp. 169-175), 2020.](/_posts/2022-12-22-itat20ceop.md)

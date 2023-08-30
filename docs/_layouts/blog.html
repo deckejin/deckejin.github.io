@@ -24,9 +24,7 @@ layout: default
           {% assign id = id | plus:1 %}
           <div class="post" id="{{id}}">
             <img src="{{ post.image  | relative_url }}">
-              <a class="" href="{{ post.url | relative_url }}">
-                <b>{{ post.title | escape }}</b> | {{ post.date | date: date_format }} | {{ post.categories }}
-              </a>
+            <a class="" href="{{ post.url | relative_url }}"> <b>{{ post.title | escape }}</b> | {{ post.date | date: date_format }} | {{ post.categories }}</a>
             <p>{{ post.excerpt }}</p>
           </div>
 
