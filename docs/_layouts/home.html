@@ -24,26 +24,19 @@ layout: default
     </div>
   </div>
 
-<!-- <hr class="line"> -->
+<hr class="line">
 
   <div class="grid-cv">
-    <!-- <h2>News:</h2>
-    {% capture news %}{% include_relative /news.md %}{% endcapture %}
-    {{ news | markdownify }} -->
-    <!-- {% assign posts = site.posts | where_exp: "item", "item.tags contains 'selected-publication'" %}
+    <h2>News:</h2>
+    <!-- {% capture news %}{% include_relative /news.md %}{% endcapture %}
+    {{ news | markdownify }}  -->
+    {% assign posts = site.posts | where_exp: "item", "item.tags contains 'news'" %}
     {% for post in posts %}
-      <div class="selected">
-        <img src="{{ post.image  | relative_url }}">
-        <div class="selected-info">
-          <a class="" href="{{ post.url | relative_url }}">
-            <b>{{ post.title | escape }}</b> 
-          </a>
-          <p>
-            {{ post.excerpt }}
-          </p>
-        </div>
+      <div class="news">
+            {{ post.date2 }} - <b>{{ post.qtitle | escape }}</b>
+            <a class="news" href="{{ post.url | relative_url }}">>> Read more...</a>
       </div>
-    {% endfor %} -->
+    {% endfor %}
   </div>
 
   <hr class="line">
@@ -66,7 +59,8 @@ layout: default
     {% endfor %}
   </div>
 
-  <!-- <div class="grid-cv">
+  <!-- <hr class="line">
+  <div class="grid-cv">
     <h2>Selected projects:</h2>
     {% assign posts = site.posts | where_exp: "item", "item.tags contains 'selected-project'" %}
     {% for post in posts %}
@@ -84,5 +78,13 @@ layout: default
     {% endfor %}
 
   </div> -->
+
+  <!-- <hr class="line">
+  <div class="grid-cv">
+    {% assign cv = site.cv %}
+    <h2>CV:</h2>
+    <p>{{ site.cv.index }}</p>
+  </div> -->
+
 </div>
 

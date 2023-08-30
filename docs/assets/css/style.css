@@ -1,5 +1,24 @@
----
----
+@media screen and (max-width: 1160px) {
+  img {
+    display: none;
+  }
+
+  .content {
+    margin: 1em 1em 0em 1em !important;
+  }
+
+  .grid {
+    display: inline !important;
+  }
+  .selected-info {
+    /* margin: 3em; */
+    padding-left: 1px !important;
+  }
+  .category {
+    padding: 4px 10px !important;
+  }
+}
+
 
 /* #3a5e52, #3a5e52 */
 
@@ -7,7 +26,10 @@ html,body{
     font-family:"Raleway",sans-serif;
     font-size:15px;
     line-height:1.5;
-    background-color: #3a5e52;
+    /* background-color: #3a5e52; */
+    /* background-color: #005C38; */
+    background-color: #1a472a;
+    
 }
 
 .header {
@@ -67,7 +89,7 @@ html,body{
   margin: 1em 10em 0em 10em;
   padding: 0em 5em 3em 5em;
   background-color: #ffffff;
-  border-radius: 5%;
+  border-radius: 50px
 }
 
 .container {
@@ -151,8 +173,23 @@ html,body{
 }
 
 .selected a{
+  text-decoration:solid;
+  color: #1a472a;
+}
+
+
+.news {
+  text-align: left;
+  display: block;
+  padding-bottom: 5px;
+}
+
+
+.news a {
+  display: block;
   text-decoration: none;
-  color: #272C31;
+  color: #1a472a;
+  padding-left: 50px;
 }
 
 .category {
@@ -168,6 +205,7 @@ html,body{
 
 .cinactive {
   background-color: #ffffff;
+  /* margin: 1em 0em 1em 0em; */
 
 }
 
@@ -199,22 +237,23 @@ html,body{
 
 .post {
   /* width: 100px; */
-  padding: 1em 0em 0em 0em;
+  /* padding: 1.5em 0em 1.5em 0em; */
 }
 
 .post img {
-  width: 100px;
+  height: 4em;
+  width: 4em;
   float: left;
   padding-right: 1em;
 }
 
 .post a{
   text-decoration: none;
-  color: #3a5e52;
+  color: #1a472a;
 }
 
 .post p{
-  padding-bottom: 0.5em;
+  /* padding-bottom: 0.5em; */
 }
 
 .post-name {
@@ -223,7 +262,7 @@ html,body{
 }
 
 .post-img {
-  width: 100%;
+  /* width: 100%; */
   height: 300px
 }
 
