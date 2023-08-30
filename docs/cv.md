@@ -44,7 +44,7 @@ author_profile: true
 - [**Jindřiška Deckerová: Cakes and tears are part of programming**](https://www.novinky.cz/zena/styl/clanek/jindriska-deckerova-k-programovani-patri-i-dorty-a-slzy-40396527), *Novinky.cz, Právo*
 - [**Jindřiška Deckerová: The best diploma thesis in Informatics**](https://www.ceskatelevize.cz/porady/10101491767-studio-ct24/221411058250702/), *Studio Víkend ČT*
 
-## Skillss
+## Skills
 - **Programming languages** - C, C++, Julia, Python, Java, MATLBAB
 - **Languages** -  *Czech*: Mother Tongue, *English*: C1 certificate, *German*: Basic,  *Spanish*: Basic
 - **Soft skills** - Fast learning; Creative
