@@ -28,7 +28,8 @@ html,body{
     line-height:1.5;
     /* background-color: #3a5e52; */
     /* background-color: #005C38; */
-    background-color: #1a472a;
+    /* background-color: #1a472a; */
+    /* background-color: #E7E8EE; */
     
 }
 
@@ -54,7 +55,7 @@ html,body{
 .nav-bar a {
   text-decoration: none;
   padding: 30px 40px 30px 30px;
-  color: #ffffff;
+  /* color: #ffffff; */color: #272C31;
 }
 
 .nav-bar .active a {
