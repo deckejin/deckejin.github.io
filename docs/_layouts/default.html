@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{ "academicons-1.9.2/css/academicons.css" | relative_url}}"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="image/png" href="/favicon.ico">
+
     {%- feed_meta -%}
     {%- if jekyll.environment == 'production' and site.google_analytics -%}
       {%- include google-analytics.html -%}
@@ -17,36 +19,26 @@
 
   <body>
     <header>
-      <nav class="nav-bar">
-        <a href="/" id="home" class="nav-button active" onclick="select_nav(this.id)">HOME</a> 
-        <a href="/cv" id="cv" class="nav-button " onclick="select_nav(this.id)" >CV</a> 
-        <a href="/publications" class="nav-button " id="publications" onclick="select_nav(this.id)" >PUBLICATIONS</a> 
-        <!-- <a href="/projects" class="nav-button" id="projects" onclick="select_nav(this.id)">PROJECTS</a> -->
-        <!-- <a href="/about" id="about" class="nav-button " onclick="select_nav(this.id)">ABOUT</a>  -->
-        <a href="/blog" id="blog" class="nav-button " onclick="select_nav(this.id)" >BLOG</a> 
-      </nav>
-      <div class="header"> 
-        
+      <div class="header" id="myHeader"> 
+        <div class="icons">
+          <a href="mailto:{{ site.author.email }}"><i class="fa fa-envelope hover-opacity"></i></a>
+          <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank"><i class="fa fa-linkedin hover-opacity"></i></a>
+          <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank"><i class="fa fa-twitter hover-opacity"></i></a>
+          <a href="https://github.com/{{ site.author.github }}" target="_blank"><i class="fa fa-github hover-opacity"></i></a>
+          <a href="https://orcid.org/{{ site.author.orcid }}" target="_blank"><i class="ai ai-orcid ai-fw hover-opacity"></i></a>
+          <a href="{{ site.author.googlescholar }}" target="_blank"><i class="ai ai-google-scholar ai-fw hover-opacity"></i></a>
+        </div>
+
+        <div class="nav-bar">
+          <a href="/" id="home" class="nav-button active" onclick="select_nav(this.id)">HOME</a> 
+          <a href="/cv" id="cv" class="nav-button " onclick="select_nav(this.id)" >CV</a> 
+          <a href="/publications" class="nav-button " id="publications" onclick="select_nav(this.id)" >PUBLICATIONS</a> 
+          <!-- <a href="/projects" class="nav-button" id="projects" onclick="select_nav(this.id)">PROJECTS</a> -->
+          <!-- <a href="/about" id="about" class="nav-button " onclick="select_nav(this.id)">ABOUT</a>  -->
+          <a href="/blog" id="blog" class="nav-button " onclick="select_nav(this.id)" >BLOG</a> 
+        </div>
       </div>
     </header>
-
-
-    <main class="content">
-      <div>{{ content }}</div>
-    </main>
-
-    
-    <!-- <footer class="footer">
-      <div class="desc">
-        <p>{{site.description | escape }}</p>
-      </div>
-
-      <div class="info">
-        {{ site.author.name | escape }}<br>
-        <i class="fa fa-home"></i> {{ site.author.bio }}<br>
-        <i class="fa fa-envelope"></i> <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
-      </div>
-    </footer> -->
     
     <script type="text/javascript">
       function filterSelected() {
@@ -72,7 +64,7 @@
             (selectedCategory == 'All' || cats.includes(selectedCategory)) 
               ? 'block' 
               : 'none';
-          postDiv.classList.add('post')
+          postDiv.classList.add('blog-post')
         {% endfor %}
 
         const buttons = document.querySelectorAll('.category');
@@ -86,10 +78,52 @@
         document.getElementById(selectedCategory).classList.remove('cinactive');
       }
 
+      // When the user scrolls the page, execute myFunction
+      window.onscroll = function() {myFunction()};
+
+      // Get the header
+      var header = document.getElementById("myHeader");
+
+      // Get the offset position of the navbar
+      var sticky = header.offsetTop;
+
+      // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+      function myFunction() {
+        if (window.pageYOffset > sticky) {
+          header.classList.add("sticky");
+        } else {
+          header.classList.remove("sticky");
+        }
+      }
 
     </script>
 
-    
+
+    <main class="content">
+      <div>{{ content }}</div>
+    </main>
+
+    <!-- <footer class="footer">
+      <div class="desc">
+        <p>{{site.description | escape }}</p>
+      </div>
+
+      <div class="info">
+        {{ site.author.name | escape }}<br>
+        <i class="fa fa-home"></i> {{ site.author.bio }}<br>
+        <i class="fa fa-envelope"></i> <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+     
+
+        <div class="icons">
+          <a href="mailto:{{ site.author.email }}"><i class="fa fa-envelope hover-opacity"></i></a>
+          <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank"><i class="fa fa-linkedin hover-opacity"></i></a>
+          <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank"><i class="fa fa-twitter hover-opacity"></i></a>
+          <a href="https://github.com/{{ site.author.github }}" target="_blank"><i class="fa fa-github hover-opacity"></i></a>
+          <a href="https://orcid.org/{{ site.author.orcid }}" target="_blank"><i class="ai ai-orcid ai-fw hover-opacity"></i></a>
+          <a href="{{ site.author.googlescholar }}" target="_blank"><i class="ai ai-google-scholar ai-fw hover-opacity"></i></a>
+        </div>
+      </div>
+    </footer> -->
 
   </body>
 

@@ -2,46 +2,30 @@
 layout: default
 ---
 
-<div class="container" >
-  <div class="grid">
-    <div class="grid-about">
-      <h1><b>{{ site.author.name }}</b></h1>
-      {{ content }}
+<div class="row">
+  <!-- <div class="column side"></div> -->
 
-
-      <div class="icons">
-        <a href="mailto:{{ site.author.email }}"><i class="fa fa-envelope hover-opacity"></i></a>
-        <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank"><i class="fa fa-linkedin hover-opacity"></i></a>
-        <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank"><i class="fa fa-twitter hover-opacity"></i></a>
-        <a href="https://github.com/{{ site.author.github }}" target="_blank"><i class="fa fa-github hover-opacity"></i></a>
-        <a href="https://orcid.org/{{ site.author.orcid }}" target="_blank"><i class="ai ai-orcid ai-fw hover-opacity"></i></a>
-        <a href="{{ site.author.googlescholar }}" target="_blank"><i class="ai ai-google-scholar ai-fw hover-opacity"></i></a>
-      </div>
-    </div>
-
-    <div class="grid-photo">
-      <img src="{{ site.author.avatar | relative_url }}"><br><br>
-    </div>
-  </div>
-
-<hr class="line">
-
-  <div class="grid-cv">
-    <h2>News:</h2>
-    <!-- {% capture news %}{% include_relative /news.md %}{% endcapture %}
-    {{ news | markdownify }}  -->
-    {% assign posts = site.posts | where_exp: "item", "item.tags contains 'news'" %}
-    {% for post in posts %}
-      <div class="news">
+  <div class="column middle">
+    <div class="grid-cv">
+      <h2>News</h2>
+      <!-- {% capture news %}{% include_relative /news.md %}{% endcapture %}
+      {{ news | markdownify }}  -->
+      {% assign posts = site.posts | where_exp: "item", "item.tags contains 'news'" %}
+      {% for post in posts %}
+        <div class="news">
+          <!-- <img src="{{ post.image  | relative_url }}"> -->
+          <div class="news-info">
             {{ post.date2 }} - <a class="news" href="{{ post.url | relative_url }}"><b>{{ post.qtitle | escape }}</b></a>
-      </div>
-    {% endfor %}
-  </div>
+          </div>
+            
+        </div>
+      {% endfor %}
+    </div>
 
-  <hr class="line">
+    <!-- <hr class="line"> -->
 
   <div class="grid-cv">
-    <h2>Selected publications:</h2>
+    <h2>Selected publications</h2>
     {% assign posts = site.posts | where_exp: "item", "item.tags contains 'selected-publication'" %}
     {% for post in posts %}
       <div class="selected">
@@ -57,6 +41,27 @@ layout: default
       </div>
     {% endfor %}
   </div>
+
+  </div>
+  
+  <div class="column side">
+   
+    <div class="grid-about">
+      <h2>About</h2>
+      <div class="grid-photo">
+        <img src="{{ site.author.avatar | relative_url }}">
+      </div>
+      <h3><b>{{ site.author.name }}</b></h3>
+      {{ content }}
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="container" >
+  <div class="grid">
+   
+  </div> -->
 
   <!-- <hr class="line">
   <div class="grid-cv">

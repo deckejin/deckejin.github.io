@@ -15,14 +15,14 @@ layout: default
           </button>
         {% endfor %}
 
-        <hr class="line"/>
-    
+        <!-- <hr class="line"/> -->
+        <div class="blog-posts">
+
         {% assign id = 0 %}
-        <div class="posts">
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         {% for post in site.posts %}
           {% assign id = id | plus:1 %}
-          <div class="post" id="{{id}}">
+          <div class="blog-post" id="{{id}}">
             <img src="{{ post.image  | relative_url }}">
             <a class="" href="{{ post.url | relative_url }}"> <b>{{ post.title | escape }}</b> | {{ post.date | date: date_format }} | {{ post.categories }}</a>
             <p>{{ post.excerpt }}</p>
