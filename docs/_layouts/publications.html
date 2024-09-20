@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<div class="column-left">    
+
+    <div class="block">
+        <h3>List of publications</h3>
+        {% assign publications = site.publications | sort : "year" | reverse %}
+        <ol class="ulist">
+            {% for publication in publications %}
+            <li><a href="{{ publication.url | relative_url }}">{{ publication.author }}, <i>{{ publication.title
+                        }}</i>,
+                    {% if publication.journal != nil%} {{ publication.journal }}, {{ publication.pages }}{{
+                    publication.volume }}{{ publication.issue }}
+                    {% else if publication.booktitle != nil %} {{ publication.booktitle }}, (pp. {{ publication.pages
+                    }})
+                    {% endif %}
+                    , {{ publication.year }}
+                    <!-- {% if publication.doi != nil %}, {{ publication.doi }} {% endif %} -->
+                    .
+                </a></li>
+            {% endfor %}
+        </ol>
+    </div>
+
+
+</div>

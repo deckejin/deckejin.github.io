@@ -1,130 +1,100 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {%- seo -%}
-    <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
-    <link rel="stylesheet" href="{{ "academicons-1.9.2/css/academicons.css" | relative_url}}"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" type="image/png" href="/favicon.ico">
+<html lang="{{ page.lang | default: site.lang | default: " en" }}">
 
-    {%- feed_meta -%}
-    {%- if jekyll.environment == 'production' and site.google_analytics -%}
-      {%- include google-analytics.html -%}
-    {%- endif -%}
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- seo -%}
+  <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ "academicons-1.9.2/css/academicons.css" | relative_url}}" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" type="image/png" href="/assets/favicon.ico">
 
-  <body>
-    <header>
-      <div class="header" id="myHeader"> 
-        <div class="icons">
+  {%- feed_meta -%}
+  {%- if jekyll.environment == 'production' and site.google_analytics -%}
+  {%- include google-analytics.html -%}
+  {%- endif -%}
+</head>
+
+<body>
+  <header>
+    <div class="header" id="myHeader">
+      <div class="navigation" id="myNavigation">
+        <a href="/" id="home" class="nav-button " onclick="select_nav(this.id)">HOME</a>
+        <a href="/cv" id="cv" class="nav-button " onclick="select_nav(this.id)">CV</a>
+        <a href="/publications" class="nav-button " id="publications" onclick="select_nav(this.id)">PUBLICATIONS</a>
+        <a href="/news" class="nav-button " id="news" onclick="select_nav(this.id)">NEWS</a>
+        <a href="javascript:void(0);" class="icon" onclick="resposiveFunc()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+
+    <div class="column-left">
+      {{ content }}
+    </div>
+
+    <div class="column-right">
+      <div class="block">
+        <div class="photo">
+          <img src="{{ site.author.avatar | relative_url }}">
+        </div>
+        <h2>{{ site.author.name }}</h2>
+        <div class="icons" style="float: left; padding-left: 2%;">
           <a href="mailto:{{ site.author.email }}"><i class="fa fa-envelope hover-opacity"></i></a>
-          <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank"><i class="fa fa-linkedin hover-opacity"></i></a>
-          <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank"><i class="fa fa-twitter hover-opacity"></i></a>
-          <a href="https://github.com/{{ site.author.github }}" target="_blank"><i class="fa fa-github hover-opacity"></i></a>
-          <a href="https://orcid.org/{{ site.author.orcid }}" target="_blank"><i class="ai ai-orcid ai-fw hover-opacity"></i></a>
-          <a href="{{ site.author.googlescholar }}" target="_blank"><i class="ai ai-google-scholar ai-fw hover-opacity"></i></a>
+          <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank"><i
+              class="fa fa-linkedin hover-opacity"></i></a>
+          <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank"><i
+              class="fa fa-twitter hover-opacity"></i></a>
+          <a href="https://github.com/{{ site.author.github }}" target="_blank"><i
+              class="fa fa-github hover-opacity"></i></a>
+          <a href="https://orcid.org/{{ site.author.orcid }}" target="_blank"><i
+              class="ai ai-orcid ai-fw hover-opacity"></i></a>
+          <a href="{{ site.author.googlescholar }}" target="_blank"><i
+              class="ai ai-google-scholar ai-fw hover-opacity"></i></a>
+        </div>
+        <div class="bio">
+          <span class="short">{{ site.author.bio }}</span>
+          <p>{{ site.author.bio_long }}</p>
         </div>
 
-        <div class="nav-bar">
-          <a href="/" id="home" class="nav-button active" onclick="select_nav(this.id)">HOME</a> 
-          <a href="/cv" id="cv" class="nav-button " onclick="select_nav(this.id)" >CV</a> 
-          <a href="/publications" class="nav-button " id="publications" onclick="select_nav(this.id)" >PUBLICATIONS</a> 
-          <!-- <a href="/projects" class="nav-button" id="projects" onclick="select_nav(this.id)">PROJECTS</a> -->
-          <!-- <a href="/about" id="about" class="nav-button " onclick="select_nav(this.id)">ABOUT</a>  -->
-          <a href="/blog" id="blog" class="nav-button " onclick="select_nav(this.id)" >BLOG</a> 
+        <div class="bio">
+          Download <a href="{{ site.url }}/assets/cv-deckerova.pdf">CV</a> directly.
         </div>
       </div>
-    </header>
-    
-    <script type="text/javascript">
-      function filterSelected() {
-        var id = 0;
-        {% for pub in site.posts %}
-          var cats = {{ pub.categories | jsonify }}
 
-          var postDiv = document.getElementById(++id);
-          postDiv.style.display =
-            (cats.includes('Selected-Publications')) 
-              ? 'unset' 
-              : 'none';
-        {% endfor %}
+    </div>
+
+  </main>
+
+  <script>
+    function resposiveFunc() {
+      var x = document.getElementById("myNavigation");
+      if (x.className === "navigation") {
+        x.className += " responsive";
+      } else {
+        x.className = "navigation";
       }
+    }
 
-      function filterUsingCategory(selectedCategory) {
-        var id = 0;
-        {% for post in site.posts %}
-          var cats = {{ post.categories | jsonify }}
+    function select_nav(id) {
+      var elements = document.getElementById("myNavigation").getElementsByTagName("*");
 
-          var postDiv = document.getElementById(++id);
-          postDiv.style.display =
-            (selectedCategory == 'All' || cats.includes(selectedCategory)) 
-              ? 'block' 
-              : 'none';
-          postDiv.classList.add('blog-post')
-        {% endfor %}
-
-        const buttons = document.querySelectorAll('.category');
-
-        buttons.forEach(button => {
-          button.classList.remove('cactive');
-          button.classList.add('cinactive');
-        });
-
-        document.getElementById(selectedCategory).classList.add('cactive');
-        document.getElementById(selectedCategory).classList.remove('cinactive');
-      }
-
-      // When the user scrolls the page, execute myFunction
-      window.onscroll = function() {myFunction()};
-
-      // Get the header
-      var header = document.getElementById("myHeader");
-
-      // Get the offset position of the navbar
-      var sticky = header.offsetTop;
-
-      // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-      function myFunction() {
-        if (window.pageYOffset > sticky) {
-          header.classList.add("sticky");
-        } else {
-          header.classList.remove("sticky");
+      for (var i = 0; i < elements.length; i++) {
+        if (elements[i].classList.contains("active")) {
+          elements[i].classList.remove("active");
         }
       }
+      var elem = document.getElementById(id);
+      elem.classList.add("active");
+    }
 
-    </script>
-
-
-    <main class="content">
-      <div>{{ content }}</div>
-    </main>
-
-    <!-- <footer class="footer">
-      <div class="desc">
-        <p>{{site.description | escape }}</p>
-      </div>
-
-      <div class="info">
-        {{ site.author.name | escape }}<br>
-        <i class="fa fa-home"></i> {{ site.author.bio }}<br>
-        <i class="fa fa-envelope"></i> <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
-     
-
-        <div class="icons">
-          <a href="mailto:{{ site.author.email }}"><i class="fa fa-envelope hover-opacity"></i></a>
-          <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank"><i class="fa fa-linkedin hover-opacity"></i></a>
-          <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank"><i class="fa fa-twitter hover-opacity"></i></a>
-          <a href="https://github.com/{{ site.author.github }}" target="_blank"><i class="fa fa-github hover-opacity"></i></a>
-          <a href="https://orcid.org/{{ site.author.orcid }}" target="_blank"><i class="ai ai-orcid ai-fw hover-opacity"></i></a>
-          <a href="{{ site.author.googlescholar }}" target="_blank"><i class="ai ai-google-scholar ai-fw hover-opacity"></i></a>
-        </div>
-      </div>
-    </footer> -->
-
-  </body>
+  </script>
+</body>
 
 </html>

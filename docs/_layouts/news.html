@@ -1,0 +1,32 @@
+---
+layout: default
+---
+<div class="column-left">
+  <div class="publication">
+    <div class="title">
+      <h2 class="" itemprop="name headline">{{ page.title | escape }}</h2>
+      {%- if page.author -%}
+      <p>
+        Authors:
+        {% for author in page.author %}
+        <i>{{ author }}</i>
+        {% endfor %}
+      </p>
+      {%- endif -%}
+      {% if page.url2 %}
+      Link: <a href="{{ page.url2 }}">{{page.url2}}</a>
+      {% endif %}
+      <!-- {%- if page.image -%}
+      <img src="{{ page.image | relative_url }}" />
+      {%- endif -%} -->
+    </div>
+
+    <div class="content" style="text-align: center;">
+      {{ page.content }}
+    </div>
+
+
+  </div>
+</div>
+
+</div>

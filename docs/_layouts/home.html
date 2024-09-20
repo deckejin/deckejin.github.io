@@ -2,77 +2,28 @@
 layout: default
 ---
 
-<div class="row">
-  <!-- <div class="column side"></div> -->
-
-  <div class="column middle">
-    <div class="grid-cv">
-      <h2>News</h2>
-      <!-- {% capture news %}{% include_relative /news.md %}{% endcapture %}
-      {{ news | markdownify }}  -->
-      {% assign posts = site.posts | where_exp: "item", "item.tags contains 'news'" %}
-      {% for post in posts %}
-        <div class="news">
-          <!-- <img src="{{ post.image  | relative_url }}"> -->
-          <div class="news-info">
-            {{ post.date2 }} - <a class="news" href="{{ post.url | relative_url }}"><b>{{ post.qtitle | escape }}</b></a>
-          </div>
-            
-        </div>
-      {% endfor %}
+<div class="column-left">
+  <div class="block">
+    <h2>News</h2>
+    {% assign news = site.news %}
+    {% for post in news %}
+    <div class="news">
+      {{ post.date2 }} - <a class="news" href="{{ post.url | relative_url }}"><b>{{ post.news | escape }}</b></a>
     </div>
-
-    <!-- <hr class="line"> -->
-
-  <div class="grid-cv">
-    <h2>Selected publications</h2>
-    {% assign posts = site.posts | where_exp: "item", "item.tags contains 'selected-publication'" %}
-    {% for post in posts %}
-      <div class="selected">
-        <img src="{{ post.image  | relative_url }}">
-        <div class="selected-info">
-          <a class="" href="{{ post.url | relative_url }}">
-            <b>{{ post.title | escape }}</b> 
-          </a>
-          <p>
-            {{ post.excerpt }}
-          </p>
-        </div>
-      </div>
     {% endfor %}
   </div>
 
-  </div>
-  
-  <div class="column side">
-   
-    <div class="grid-about">
-      <h2>About</h2>
-      <div class="grid-photo">
-        <img src="{{ site.author.avatar | relative_url }}">
-      </div>
-      <h3><b>{{ site.author.name }}</b></h3>
-      {{ content }}
-    </div>
-  </div>
-</div>
+  <hr style="width: 148%; border: #C2CBB2 solid 1px;">
 
-
-<!-- <div class="container" >
-  <div class="grid">
-   
-  </div> -->
-
-  <!-- <hr class="line">
-  <div class="grid-cv">
-    <h2>Selected projects:</h2>
-    {% assign posts = site.posts | where_exp: "item", "item.tags contains 'selected-project'" %}
+  <div class="block">
+    <h2>Publications</h2>
+    {% assign posts = site.publications | sort : "year" | reverse %}
     {% for post in posts %}
-    <div class="selected">
+    <div class="publication">
       <img src="{{ post.image  | relative_url }}">
-      <div class="selected-info">
+      <div class="info">
         <a class="" href="{{ post.url | relative_url }}">
-          <b>{{ post.title | escape }}</b> 
+          <b>{{ post.title | escape }}</b>
         </a>
         <p>
           {{ post.excerpt }}
@@ -80,15 +31,23 @@ layout: default
       </div>
     </div>
     {% endfor %}
+  </div>
 
-  </div> -->
+  <hr style="width: 148%; border: #C2CBB2 solid 1px;">
 
-  <!-- <hr class="line">
-  <div class="grid-cv">
-    {% assign cv = site.cv %}
-    <h2>CV:</h2>
-    <p>{{ site.cv.index }}</p>
-  </div> -->
+  <div class="block">
+    <h2>Education</h2>
+    {% assign schools = site.education | sort | reverse %}
+    <ul class="ulist">
+      {% for school in schools %}
+      <li> {{ school.year }}: <b>{{ school.school }} </b> <br>
+        <span class="info">{{ school.type }}
+          {% if school.field != "" %} | {{ school.field }} {% endif %}
+          {% if school.thesis != "" %} | Thesis: <i>{{ school.thesis }}</i> {% endif %}
+          {% endfor %}
+        </span>
+      </li>
+    </ul>
 
+  </div>
 </div>
-

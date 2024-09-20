@@ -1,0 +1,124 @@
+---
+layout: default
+---
+
+<div class="column-left">
+    <div class="block">
+        <h3>Education</h3>
+        {% assign schools = site.education | sort | reverse %}
+        <ul class="ulist">
+            {% for school in schools %}
+            <li> {{ school.year }}: <b>{{ school.school }} </b> <br>
+                <span class="info">{{ school.type }}
+                    {% if school.field != "" %} | {{ school.field }} {% endif %}
+                    {% if school.thesis != "" %} | Thesis: <i>{{ school.thesis }}</i> {% endif %}
+                    {% endfor %}
+                </span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="block">
+        <h3>Honors and Awards</h3>
+        {% assign awards = site.awards | sort : "year" | reverse %}
+        <ul class="ulist">
+            {% for award in awards %}
+            <li> {{ award.year }}: <b>{{ award.title }}</b>
+                {% if award.info != "" %} - {{ award.info }} {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+    <div class="block">
+        <h3>Publications</h3>
+        {% assign publications = site.publications | sort : "year" | reverse %}
+        <ol class="ulist">
+            {% for publication in publications %}
+            <li><a>{{ publication.author }}, <i>{{ publication.title
+                        }}</i>,
+                    {% if publication.journal != nil%} {{ publication.journal }}, {{ publication.pages }}{{
+                    publication.volume }}{{ publication.issue }}
+                    {% else if publication.booktitle != nil %} {{ publication.booktitle }}, (pp. {{ publication.pages
+                    }})
+                    {% endif %}
+                    , {{ publication.year }}
+                    <!-- {% if publication.doi != nil %}, {{ publication.doi }} {% endif %} -->
+                    .
+                </a></li>
+            {% endfor %}
+        </ol>
+    </div>
+
+
+
+    <div class="block">
+        <h3>Teaching</h3>
+        {% assign teaching_by_type = site.teaching | group_by : "type" %}
+
+        <ul class="ulist">
+            {% for teaching in teaching_by_type %}
+            <li>
+            {% if teaching.name == "teaching" %} <b>Instructor</b>{% endif %}
+            {% if teaching.name == "supervision" %} <b>Student supervision</b>{% endif %}
+            
+            <ul>
+                {% for elem in teaching.items %}
+                <li>
+                    {% if  teaching.name == "supervision" %} {{ elem.thesis }}: <i>{{ elem.title }}</i>  - {{ elem.year }} {%endif%}
+                    {% if  teaching.name == "teaching" %} {{ elem.title }} - {{ elem.year }} {%endif%}
+                </li>
+                {% endfor %}
+            </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="block">
+        <h3>Community</h3>
+        {% assign community = site.community | sort : "year" | reverse %}
+        <ul class="ulist">
+            {% for serv in community %}
+            <li> {{ serv.year }}: {{ serv.title }} </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+    <div class="block">
+        <h3>Media presence</h3>
+        {% assign media = site.media | sort : "year" | reverse %}
+        <ul class="ulist">
+            {% for med in media %}
+            <li><a href="{{ med.url }}"><b>{{ med.title }}</b>,
+                    <i>{{ med.medium }}</i>
+                </a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+    <div class="block">
+        <h3>Skills</h3>
+        {% assign skils = site.skills %}
+        <ul class="ulist">
+            {% for skill in skils %}
+            <li> <b>{{ skill.title }}</b> - {{ skill.desc }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="block">
+        <h3>Other</h3>
+        {% assign other = site.other %}
+        <ul class="ulist">
+            {% for oth in other %}
+            <li><a href="{{ oth.url }}"><b>{{ oth.title }}</b> - {{ oth.desc }}
+                </a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
