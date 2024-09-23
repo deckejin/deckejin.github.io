@@ -9,6 +9,7 @@ year: 2023
 doi: 10.1109/ECMR59166.2023.10256328
 abstract: In this paper, we present a novel improvement heuristic to address the Close Enough Traveling Salesman Problem in environments with obstacles (CETSP-obs). The CETSP-obs is a variant of the Traveling Salesman Problem (TSP), where the goal is to find a sequence of visits to given disk-shaped regions together with the points of visits to the regions. We address challenging instances in a polygonal domain with polygonal obstacles, where the final path connecting the regions must be collision-free. We propose a novel Post-Optimization procedure using Mixed Integer Non-Linear Programming (MINLP) to improve existing heuristic solutions to the CETSP-obs. We deploy the method with existing heuristic solvers and based on the presented evaluation results, the proposed Post-Optimization significantly improves the heuristic solutions of all examined solvers and makes them competitive regarding the solution quality. The statistical evaluation reveals that the sequence found using relatively sparse sampling of the disk regions yields the best solutions among the evaluated solvers. The results support the benefit of the proposed MINLP-based solution to the continuous optimization of the CETSP-obs.
 image: /images/ecmr23.png
+date2: 15/06/2023
 url2: https://ieeexplore.ieee.org/document/10256328
 web: deckerova23ecmr
 citation: "

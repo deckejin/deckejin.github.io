@@ -1,11 +1,12 @@
 ---
-layout: news
+layout: new
 type: news
 title: "věda bez cenzury - Epizoda 11 - Jak na doktorát ČVUT"
 image: "/images/podcast-11.png"
 author: "Deckerová, Jindřiška"
 date2: "30/8/2023"
 news: "New episode of podcast! And this time about PhD..."
+year: "2023"
 excerpt_separator: <!--more-->
 ---
 *New episode of podcast! And this time about PhD...*

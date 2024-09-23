@@ -1,11 +1,12 @@
 ---
-layout: news
+layout: new
 type: news
 title: "věda bez cenzury - Epizoda 12 - Komunikace vědy ft. Karolína"
 image: "/images/podcast-12.webp"
 author: "Deckerová, Jindřiška"
 date2: "03/10/2023"
 news: "How to communicate science?! Check out the latest podcast episode to find out..."
+year: "2023"
 excerpt_separator: <!--more-->
 ---
 *How to communicate science?! Check out the latest podcast episode to find out...*

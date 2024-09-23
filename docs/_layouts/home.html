@@ -6,10 +6,21 @@ layout: default
   <div class="block">
     <h2>News</h2>
     {% assign news = site.news %}
-    {% for post in news %}
+    {% assign cnt = 0 %}
+    {% for new in news %}
+    {% if cnt == 3 %} {% break %} {% endif %}
     <div class="news">
-      {{ post.date2 }} - <a class="news" href="{{ post.url | relative_url }}"><b>{{ post.news | escape }}</b></a>
+      {% if new.type == "publication" %}
+      <a href="{{ new.url2 | relative_url }}">{{ new.date2 }} - <b>{{ new.news
+            }}</b>
+        </a>
+      {% else %}
+      <a href="{{ new.url | relative_url }}">{{ new.date2 }} - <b>{{ new.news
+            }}</b>
+        </a>
+      {% endif %}
     </div>
+    {% assign cnt = cnt | plus:1 %}
     {% endfor %}
   </div>
 

@@ -1,32 +1,27 @@
 ---
 layout: default
 ---
+
 <div class="column-left">
-  <div class="publication">
-    <div class="title">
-      <h2 class="" itemprop="name headline">{{ page.title | escape }}</h2>
-      {%- if page.author -%}
-      <p>
-        Authors:
-        {% for author in page.author %}
-        <i>{{ author }}</i>
-        {% endfor %}
-      </p>
-      {%- endif -%}
-      {% if page.url2 %}
-      Link: <a href="{{ page.url2 }}">{{page.url2}}</a>
-      {% endif %}
-      <!-- {%- if page.image -%}
-      <img src="{{ page.image | relative_url }}" />
-      {%- endif -%} -->
+
+    <div class="block">
+        <h3>News</h3>
+        {% assign news = site.news | sort : "year" | reverse %}
+        <ul class="ulist">
+            {% for new in news %}
+            {% if new.type == "publication" %}
+            <li><a href="{{ new.url2 | relative_url }}">{{ new.date2 }} - <b>{{ new.news
+                        }}</b>
+                </a></li>
+            {% else %}
+            <li><a href="{{ new.url | relative_url }}">{{ new.date2 }} - <b>{{ new.news
+                        }}</b>
+                </a></li>
+            {% endif %}
+
+            {% endfor %}
+        </ul>
     </div>
 
-    <div class="content" style="text-align: center;">
-      {{ page.content }}
-    </div>
-
-
-  </div>
-</div>
 
 </div>

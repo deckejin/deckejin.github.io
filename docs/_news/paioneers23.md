@@ -1,11 +1,12 @@
 ---
-layout: news
+layout: new
 type: news
 title: "PAiONEERS TALKS - Popularizace vědy, roboti a drony"
 image: "/images/paioneers.png"
 author: "Deckerová, Jindřiška"
 date2: "23/5/2023"
 news: "I’ve been a guest to the PAiONEERS TALKS podcast hosted by amazing Sara Polak!"
+year: "2023"
 excerpt_separator: <!--more-->
 ---
 *I’ve been a guest to the PAiONEERS TALKS podcast hosted by amazing Sara Polak!*

@@ -3,3 +3,8 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+Mk
+Makefile
+run_locally.sh
+scripts
+bibtex

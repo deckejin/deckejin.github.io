@@ -11,6 +11,7 @@ issue: 3
 doi: 10.1109/LRA.2019.2900507
 abstract: In this letter, we address the multi-goal path planning problem to determine a cost-efficient path to visit a set of three-dimensional regions. The problem is a variant of the traveling salesman problem with neighborhoods (TSPN) where an individual neighborhood consists of multiple regions, and the problem is to determine a shortest multi-goal path to visit at least one region of each neighborhood. Because each neighborhood may consist of several regions, it forms a neighborhood set, and the problem is called the generalized TSPN (GTSPN) in the literature. We propose two heuristic algorithms to provide a feasible solution of the GTSPN quickly. The first algorithm is based on a decoupled approach using a solution of the generalized TSP that is further improved by a quick post-processing procedure. Besides, we propose to employ the existing unsupervised learning technique called the growing self-organizing array to quickly find a feasible solution of the GTSPN that can be further improved by more demanding optimization. The reported results on existing benchmarks for the GTSPN indicate that both proposed heuristics provide better or competitive solutions than the state-of-the-art reference algorithm, but they are up to two orders of magnitude faster.
 image: /images/ral19gtspn.png
+date2: 30/01/2019
 url2: https://ieeexplore.ieee.org/document/8645724
 web: faigl19ral
 citation: "
